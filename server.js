@@ -1,11 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
+const homeboyzRouter = require('./routes/homeboyzRouter')
 
-const hostname ='albert';
+const hostname ='localhost';
 const port = 3001;
 
 const app = express();
 app.use(morgan('dev'));
+app.use(express.json());
+
+app.use('./homeboyz', homeboyzRouter);
 
 app.use(express.static(__dirname + '/public'))
 
